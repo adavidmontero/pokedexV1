@@ -10,13 +10,13 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
             @foreach ($pokemons as $pokemon)
                 <div class="col mb-4">
-                    <div class="card shadow-md bg-light">
+                    <div class="card shadow bg-light">
                         <img src="{{ $collectionPokemons[$pokemon['name']]['image'] }}"
                             class="card-img-top px-4" alt="{{ $pokemon['name'] }} image">
 
                         <div class="card-body">
                             <h5 class="card-title text-capitalize text-center bg-dark py-2">
-                                <a href="/{{ $pokemon['name'] }}" class="text-white text-decoration-none">
+                                <a href="{{ route('page.show', $pokemon['name']) }}" class="text-white text-decoration-none">
                                     {{ $pokemon['name'] }}
                                 </a>
                             </h5>
@@ -56,8 +56,22 @@
                 <div class="infinite-scroll-request spinner-border text-pokemon-red" role="status">
                     <span class="sr-only">Loading...</span>
                 </div>
-                <p class="infinite-scroll-last">Fin del contenido</p>
-                <p class="infinite-scroll-error">Error</p>
+                {{-- <p class="infinite-scroll-last">Fin del contenido</p> --}}
+                <div class="infinite-scroll-last">
+                    <img src="{{ asset('images/pikachu.jpg') }}" class="d-block mx-auto rounded rounded-3 shadow border border-light"
+                        width="200" height="200" alt="pikachu llorando">
+                    <div class="alert alert-dark shadow mt-4" role="alert">
+                        ¡Ooops...! Parece que Nintendo no ha sacado más generaciones.
+                    </div>
+                </div>
+                <div class="infinite-scroll-error">
+                    <img src="{{ asset('images/rocket.png') }}" class="d-block mx-auto rounded rounded-3 shadow border border-light"
+                        width="200" height="200" alt="equipo rocket">
+                    <div class="infinite-scroll-error alert alert-danger mt-4" role="alert">
+                        ¡Houston tenemos un problema!
+                    </div>
+                </div>
+                {{-- <p class="infinite-scroll-error">Error</p> --}}
             </div>
         </div>
         <!-- Paginación -->

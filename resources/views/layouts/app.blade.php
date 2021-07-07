@@ -23,8 +23,8 @@
             }
         </style>
     </head>
-    <body class="bg-dark">
-        <nav class="navbar bg-pokemon-red shadow-md p-3 border-bottom border-white">
+    <body {{-- class="bg-dark" --}}>
+        <nav class="navbar bg-pokemon-red shadow p-3 {{-- border-bottom border-white --}}">
             <a class="navbar-brand mx-auto" href="/">
                 <img src="{{ asset('images/logo.png') }}" width="250"/>
             </a>
