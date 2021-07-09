@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\ViewModels\PokemonsViewModel;
-use App\ViewModels\PokemonViewModel;
 use GuzzleHttp\Client;
 use GuzzleHttp\Promise;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\ViewModels\PokemonViewModel;
 use Illuminate\Support\Facades\Http;
+use App\ViewModels\PokemonsViewModel;
 
 class PageController extends Controller
 {
@@ -57,5 +59,12 @@ class PageController extends Controller
         $viewModel = new PokemonViewModel($pokemon);
 
         return view('pages.show', $viewModel);
+    }
+
+    public function search(Request $request)
+    {
+        $name = Str::lower($request->get('name'));
+
+        return $this->show($name);
     }
 }

@@ -6,6 +6,16 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <form action="{{ route('page.search') }}">
+                <h1 class="display-4">Bienvenido(a) a la Laravel Pokédex</h1>
+                <p class="lead">En esta aplicación podrás visualizar la información de cualquier pokémon. Lets do it!</p>
+                <input type="search" name="name" id="name" placeholder="Nombre del Pokémon. Ej: bulbasaur"
+                    class="form-control w-50 mx-auto">
+            </form>
+        </div>
+    </div>
     <div class="d-none" id="main-content">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
             @foreach ($pokemons as $pokemon)
