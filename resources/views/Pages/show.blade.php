@@ -10,24 +10,24 @@
         <div class="row">
             <div class="col-md-4">
                 <a class="btn btn-sm bg-pokemon-blue text-white d-inline-flex align-items-center"
-                    href="/" role="button">
+                    href="{{ url()->previous() }}" role="button">
                     <img src="https://img.icons8.com/office/30/000000/pokeball.png" class="mr-2"/>
-                    Principal
+                    Volver
                 </a>
                 <hr class="d-md-none">
             </div>
-            <div class="col-md-8 d-flex justify-content-between">
-                <a class="btn btn-sm bg-pokemon-red text-white d-inline-flex align-items-center"
-                    href="/pokemon/{{ $pokemon['id'] - 1 }}" role="button">
-                    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/long-arrow-left.png" class="mr-2" />
-                    Anterior
-                </a>
-
-                <a class="btn btn-sm bg-pokemon-red text-white d-inline-flex align-items-center"
-                    href="/pokemon/{{ $pokemon['id'] + 1 }}" role="button">
-                    Siguiente
-                    <img src="https://img.icons8.com/ios-glyphs/30/ffffff/long-arrow-right.png" class="ml-2" />
-                </a>
+            <div class="col-md-8">
+                <form action="{{ route('page.search') }}">
+                    <div class="input-group shadow-sm">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">
+                            <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/>
+                          </span>
+                        </div>
+                        <input type="search" name="name" id="name" placeholder="Buscar pokémon. Ej: bulbasaur"
+                            class="form-control">
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -186,6 +186,20 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <a class="btn btn-sm bg-pokemon-red text-white d-inline-flex align-items-center"
+                href="/pokemon/{{ $pokemon['id'] - 1 }}" role="button">
+                <img src="https://img.icons8.com/ios-glyphs/30/ffffff/long-arrow-left.png" class="mr-2" />
+                Anterior
+            </a>
+
+            <a class="btn btn-sm bg-pokemon-red text-white d-inline-flex align-items-center"
+                href="/pokemon/{{ $pokemon['id'] + 1 }}" role="button">
+                Siguiente
+                <img src="https://img.icons8.com/ios-glyphs/30/ffffff/long-arrow-right.png" class="ml-2" />
+            </a>
         </div>
     </div>
 @endsection

@@ -53,7 +53,7 @@ class PageController extends Controller
         $pokemon = Http::get('https://pokeapi.co/api/v2/pokemon/' . $name)->json();
 
         if (!$pokemon) {
-            abort(404);
+            return view('404');
         }
 
         $viewModel = new PokemonViewModel($pokemon);

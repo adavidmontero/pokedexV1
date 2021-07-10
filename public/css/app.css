@@ -1,9 +1,19 @@
+.container-404 {
+    min-height: calc(100vh - 22vh);
+    display: flex;
+    align-items: center;
+}
+
 .bg-pokemon-red {
     background-color: #ED1B24;
 }
 
 .text-pokemon-red {
     color: #ED1B24;
+}
+
+.border-pokemon-red {
+    border: 2px solid #ED1B24;
 }
 
 .bg-pokemon-blue {
@@ -14,12 +24,20 @@
     color: #2a75bb;
 }
 
+.border-pokemon-blue {
+    border: 2px solid #2a75bb;
+}
+
 .bg-pokemon-yellow {
     background-color: #ffcb05;
 }
 
 .text-pokemon-yellow {
     color: #ffcb05;
+}
+
+.border-pokemon-yellow {
+    border: 2px solid #ffcb05;
 }
 
 .steel {
@@ -93,6 +111,4 @@
 .flying {
     background-color: #98A8F0;
 }
-
-
 
