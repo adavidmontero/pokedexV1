@@ -18,14 +18,17 @@
             </div>
             <div class="col-md-8">
                 <form action="{{ route('page.search') }}">
-                    <div class="input-group shadow-sm">
+                    <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">
                             <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/>
                           </span>
                         </div>
                         <input type="search" name="name" id="name" placeholder="Buscar pokémon. Ej: bulbasaur"
-                            class="form-control">
+                            class="shadow-sm form-control @error('name') is-invalid @enderror">
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </form>
             </div>
@@ -36,7 +39,7 @@
         <div class="row">
             <div class="col-md-4">
                 <h5 class="text-capitalize text-center text-white bg-dark rounded py-2">
-                    {{ $pokemon['name'] }}
+                    {{ $pokemon['name_f'] }}
                 </h5>
                 <div class="card shadow bg-light">
                     <img src="{{ $pokemon['image'] }}"

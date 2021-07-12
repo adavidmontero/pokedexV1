@@ -2,25 +2,26 @@
 
 namespace App\ViewModels;
 
+use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
 
 class PokemonsViewModel extends ViewModel
 {
-    public function __construct($offset, $pokemons, $responses)
+    public function __construct($page, $pokemons, $responses)
     {
-        $this->offset = $offset;
+        $this->page = $page;
         $this->pokemons = $pokemons;
         $this->responses = $responses;
     }
 
     public function previous()
     {
-        return $this->offset > 0 ? $this->offset - 1 : null;
+        return $this->page > 0 ? $this->page - 1 : null;
     }
 
     public function next()
     {
-        return $this->offset < 139 ? $this->offset + 1 : null;
+        return $this->page < 139 ? $this->page + 1 : null;
     }
 
     public function collectionPokemons()
@@ -29,8 +30,6 @@ class PokemonsViewModel extends ViewModel
 
         foreach ($this->pokemons as $pokemon) {
             $jsonObject = json_decode($this->responses[$pokemon['name']]['value']->getBody()->getContents());
-
-            //dd($jsonObject);
 
             $collectionPokemon->prepend(
                 collect(), $pokemon['name']
@@ -41,10 +40,10 @@ class PokemonsViewModel extends ViewModel
                 'height' => ($jsonObject->height / 10) . ' m',
                 'types' => $jsonObject->types,
                 'weight' => ($jsonObject->weight / 10) . ' kg',
+                'name_f' => Str::replace('-', ' ', $pokemon['name'])
             ]);
         }
 
-        //dd($collectionPokemon);
         return $collectionPokemon;
     }
 
@@ -52,13 +51,4 @@ class PokemonsViewModel extends ViewModel
     {
         return $this->pokemons;
     }
-
-    /* public function formatType($types)
-    {
-        foreach ($types as $t) {
-            $t->type->class = $t->type->name;
-        }
-
-        return $types;
-    } */
 }

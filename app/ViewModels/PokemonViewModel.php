@@ -2,6 +2,7 @@
 
 namespace App\ViewModels;
 
+use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
 
 class PokemonViewModel extends ViewModel
@@ -20,8 +21,9 @@ class PokemonViewModel extends ViewModel
             'weight' => ($this->pokemon['weight'] / 10) . ' kg',
             'stats' => $this->calculateStats($this->pokemon['stats']),
             'abilities' => $this->calculateAbilities($this->pokemon['abilities']),
-            'items' => $this->calculateItems($this->pokemon['held_items'])
-        ])->except(['game_indices', 'location_area_encounters', 'order', 'moves']);
+            'items' => $this->calculateItems($this->pokemon['held_items']),
+            'name_f' => Str::replace('-', ' ', $this->pokemon['name'])
+        ])->except(['game_indices', 'location_area_encounters', 'order', 'moves', 'past_types', 'is_default', 'forms', 'species']);
 
         //dd($pokemon);
 

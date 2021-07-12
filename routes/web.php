@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PageController@index')->name('page.index');
-Route::get('/offset/{offset?}', 'PageController@index');
+Route::get('/page/{page?}', 'PageController@index');
 Route::get('/search', 'PageController@search')->name('page.search');
 Route::get('/pokemon/{name?}', 'PageController@show')->name('page.show');
