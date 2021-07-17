@@ -7,11 +7,12 @@ use Spatie\ViewModels\ViewModel;
 
 class PokemonsViewModel extends ViewModel
 {
-    public function __construct($page, $pokemons, $responses)
+    public function __construct($page, $pokemons, $responses, $type)
     {
         $this->page = $page;
         $this->pokemons = $pokemons;
         $this->responses = $responses;
+        $this->type = $type;
     }
 
     public function previous()
@@ -28,8 +29,12 @@ class PokemonsViewModel extends ViewModel
     {
         $collectionPokemon = collect([]);
 
-        foreach ($this->pokemons as $pokemon) {
-            $jsonObject = json_decode($this->responses[$pokemon['name']]['value']->getBody()->getContents());
+        foreach ($this->pokemons as $key => $pokemon) {
+            if ($this->type === 'index') {
+                $jsonObject = json_decode($this->responses[$key]['value']->getBody()->getContents());
+            } else if ($this->type === 'search') {
+                $jsonObject = json_decode($this->responses[$pokemon['name']]['value']->getBody()->getContents());
+            }
 
             $collectionPokemon->prepend(
                 collect(), $pokemon['name']
@@ -40,9 +45,12 @@ class PokemonsViewModel extends ViewModel
                 'height' => ($jsonObject->height / 10) . ' m',
                 'types' => $jsonObject->types,
                 'weight' => ($jsonObject->weight / 10) . ' kg',
-                'name_f' => Str::replace('-', ' ', $pokemon['name'])
-            ]);
+                'name_f' => Str::replace('-', ' ', $pokemon['name']),
+                'id' => $jsonObject->id
+            ])->only(['image', 'height', 'types', 'weight', 'name_f', 'id']);
         }
+
+        //dd($collectionPokemon);
 
         return $collectionPokemon;
     }
