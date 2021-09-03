@@ -66,7 +66,7 @@ class PageController extends Controller
         $viewModel = new PokemonsViewModel($page, $pokemons, $responses, 'index');
 
         //Enviamos a la vista todo lo que se retorne en el viewModel
-        return view('pages.index', $viewModel);
+        return view('Pages.index', $viewModel);
     }
 
     public function show($id)
@@ -85,7 +85,7 @@ class PageController extends Controller
             $pokemon = json_decode($promise->wait(), true);
             $viewModel = new PokemonViewModel($pokemon);
 
-            return view('pages.show', $viewModel);
+            return view('Pages.show', $viewModel);
         } catch (Exception $e){
             if ($e->getCode() === 404) return view('errors.404');
         }
@@ -125,6 +125,6 @@ class PageController extends Controller
 
         $viewModel = new PokemonsViewModel(1, $results, $responses, 'search');
 
-        return view('pages.search', $viewModel, compact('name'));
+        return view('Pages.search', $viewModel, compact('name'));
     }
 }
