@@ -33,14 +33,14 @@
                 </div>
                 {{-- <p class="infinite-scroll-last">Fin del contenido</p> --}}
                 <div class="infinite-scroll-last">
-                    <img src="{{ asset('images/pikachu.jpg') }}" class="d-block mx-auto rounded rounded-3 shadow border border-light"
+                    <img src="{{ asset('/images/pikachu.jpg') }}" class="d-block mx-auto rounded rounded-3 shadow border border-light"
                         width="200" height="200" alt="pikachu llorando">
                     <div class="alert alert-dark shadow mt-4" role="alert">
                         ¡Ooops...! Parece que Nintendo no ha sacado más generaciones.
                     </div>
                 </div>
                 <div class="infinite-scroll-error">
-                    <img src="{{ asset('images/rocket.png') }}" class="d-block mx-auto rounded rounded-3 shadow border border-light"
+                    <img src="{{ asset('/images/rocket.png') }}" class="d-block mx-auto rounded rounded-3 shadow border border-light"
                         width="200" height="200" alt="equipo rocket">
                     <div class="infinite-scroll-error alert alert-danger mt-4" role="alert">
                         ¡Houston tenemos un problema!

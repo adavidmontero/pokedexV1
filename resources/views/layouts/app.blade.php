@@ -27,7 +27,7 @@
     <body {{-- class="bg-dark" --}}>
         <nav class="navbar bg-pokemon-red shadow p-3 {{-- border-bottom border-white --}}">
             <a class="navbar-brand mx-auto" href="{{ route('page.index') }}">
-                <img src="{{ asset('images/logo.png') }}" width="250"/>
+                <img src="{{ asset('/images/logo.png') }}" width="250"/>
             </a>
         </nav>
 
