@@ -29,7 +29,7 @@
                     </p>
                 </div>
                 <div class="d-flex align-items-center">
-                    <img src="https://img.icons8.com/ios/30/000000/weight.png"/>
+                    <img src="https://img.icons8.com/ios-glyphs/30/000000/industrial-scales.png"/>
                     <p class="card-text ml-2">
                         {{ $collectionPokemons[$pokemon['name']]['weight'] }}
                     </p>
